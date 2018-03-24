@@ -61,8 +61,16 @@ function update(delta) {
   }
 
   if (x || y) {
+    movePlayer(socket.id, {x, y});
     socket.emit('move', {x, y});
   }
+}
+
+function movePlayer(pId, {x, y}) {
+  var p = state.players[pId];
+
+  p.x += x;
+  p.y += y;
 }
 
 function draw() {
