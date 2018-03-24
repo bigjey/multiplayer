@@ -1,5 +1,6 @@
 function Game(io) {
   const players = {};
+  const LATENCY = 200;
 
   io.on('connection', (socket) => {
     console.log('connect', Object.keys(players).length);
@@ -38,7 +39,10 @@ function Game(io) {
   function updateState(){
     const state = {players};
 
-    io.emit('state', state);
+    setTimeout(() => {
+      io.emit('state', state);
+    }, LATENCY);
+
   }
 
 }
