@@ -8,8 +8,6 @@ function movePlayer(player, d) {
   if (y < 0) y = 400 + y;
   if (y >= 400) y = y - 400;
 
-  console.log('gamelogic???');
-
   return {
     ...player,
     x,
