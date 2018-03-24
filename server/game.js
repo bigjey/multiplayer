@@ -1,3 +1,5 @@
+const { movePlayer } = require('../client/gamelogic');
+
 function Game(io) {
   const players = {};
   const SERVER_LATENCY = 500;
@@ -14,19 +16,8 @@ function Game(io) {
 
     updateState();
 
-    socket.on('move', ({x, y}) => {
-
-      var p = players[socket.id];
-
-      p.x += x;
-      p.y += y;
-
-      if (p.x < 0) p.x = 400 + p.x;
-      if (p.x >= 400) p.x = p.x - 400;
-
-      if (p.y < 0) p.y = 400 + p.y;
-      if (p.y >= 400) p.y = p.y - 400;
-
+    socket.on('move', (d) => {
+      players[socket.id] = movePlayer(players[socket.id], d);
       updateState();
     })
 

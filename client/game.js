@@ -62,18 +62,11 @@ function update(delta) {
   }
 
   if (x || y) {
-    movePlayer(socket.id, {x, y});
+    state.players[socket.id] = movePlayer(state.players[socket.id], {x, y});
     setTimeout(function() {
       socket.emit('move', {x, y});
     }, CLIENT_LATENCY)
   }
-}
-
-function movePlayer(pId, {x, y}) {
-  var p = state.players[pId];
-
-  p.x += x;
-  p.y += y;
 }
 
 function draw() {
