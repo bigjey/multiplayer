@@ -22,6 +22,7 @@ var state = null;
 var speed = 200/1000;
 var W = 400;
 var H = 400;
+var CLIENT_LATENCY = 500;
 
 createCanvas();
 tick();
@@ -62,7 +63,9 @@ function update(delta) {
 
   if (x || y) {
     movePlayer(socket.id, {x, y});
-    socket.emit('move', {x, y});
+    setTimeout(function() {
+      socket.emit('move', {x, y});
+    }, CLIENT_LATENCY)
   }
 }
 
