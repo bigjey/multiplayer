@@ -1,0 +1,33 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add express
+
+PATH: 
+  /Users/dizhetskyi/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  9.4.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/express: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND webproxy.lhr4.corp.booking.com webproxy.lhr4.corp.booking.com:3128
+      at ClientRequest.onError (/usr/local/lib/node_modules/yarn/lib/cli.js:137335:17)
+      at Object.onceWrapper (events.js:255:19)
+      at ClientRequest.emit (events.js:160:13)
+      at Socket.socketErrorListener (_http_client.js:389:9)
+      at Socket.emit (events.js:160:13)
+      at emitErrorNT (internal/streams/destroy.js:64:8)
+      at process._tickCallback (internal/process/next_tick.js:152:19)
