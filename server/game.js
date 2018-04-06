@@ -1,4 +1,4 @@
-const { movePlayer } = require('../client/gamelogic');
+const { applyCommand } = require('../client/gamelogic');
 
 function Game(io) {
   const players = {};
@@ -9,16 +9,17 @@ function Game(io) {
 
     const p = {
       x: 100 + Object.keys(players).length * 100,
-      y: 200
+      y: 200,
+      latestCommand: -1
     }
     
     players[socket.id] = p;
 
     updateState();
 
-    socket.on('move', (d) => {
-      players[socket.id] = movePlayer(players[socket.id], d);
-      updateState();
+    socket.on('command', (command) => {
+      players[socket.id] = applyCommand(players[socket.id], command);
+      players[socket.id].latestCommand = command.id;
     })
 
     socket.on('disconnect', () => {
@@ -35,6 +36,8 @@ function Game(io) {
     }, SERVER_LATENCY);
 
   }
+
+  setInterval(updateState, 1000/10);
 
 }
 

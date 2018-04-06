@@ -1,3 +1,12 @@
+function applyCommand(player, command) {
+  if (command.type === 'move') {
+    // console.log('applying command', {...command})
+    return movePlayer(player, command.data);
+  }
+
+  console.log('could not apply command', command);
+}
+
 function movePlayer(player, d) {
   var x = player.x += d.x;
   var y = player.y += d.y;
@@ -17,6 +26,6 @@ function movePlayer(player, d) {
 
 if (typeof module === 'object') {
   module.exports = {
-    movePlayer: movePlayer
+    applyCommand: applyCommand
   };
 }
